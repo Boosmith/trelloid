@@ -1,0 +1,22 @@
+{
+  "name": "react-node-go-machine-learning",
+  "version": "0.1.0",
+  "description": "Application to upload data for machine learning",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/boosmith/react-node-go-machine-learning.git"
+  },
+  "keywords": [
+    "react",
+    "go",
+    "machine-learning",
+    "nodejs"
+  ],
+  "author": "Andrew Smith",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/boosmith/react-node-go-machine-learning#readme"
+}
