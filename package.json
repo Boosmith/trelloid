@@ -30,5 +30,10 @@
     "react-router": "^4.3.1",
     "react-router-redux": "^4.0.8",
     "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
   }
 }
