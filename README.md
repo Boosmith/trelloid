@@ -1,7 +1,6 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
+This repository is for an application to upload test machine learning data then run data against the ML.
 ### What is this repository for? ###
 
 * Quick summary
