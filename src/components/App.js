@@ -1,24 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Header from './common/Header';
-import {BrowserRouter as Router, Route} from "react-router-dom";
-import HomePage from "./home/HomePage";
-import AboutPage from "./about/AboutPage";
+import Routes from './common/Routes';
+
 
 class App extends React.Component {
+	constructor(props, context) {
+		super(props);
+		this.state = {
+			user: {
+				id: 1,
+				firstName: 'Andrew',
+				lastName: 'Smith'
+			}
+		};
+	}
+
+
 	render() {
 		return (
 			<div className="container-fluid">
 				<Header/>
-				<Route path="/" exact component={HomePage}/>
-				<Route path="/about" component={AboutPage}/>
+				<Routes/>
 			</div>
 		);
 	}
 }
-
-App.propTypes = {
-	children: PropTypes.object.isRequired
-};
 
 export default App;
