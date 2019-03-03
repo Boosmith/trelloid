@@ -30,7 +30,8 @@ class Routes extends React.Component {
 
 
 Routes.propTypes = {
-	users: PropTypes.array.isRequired
+	users: PropTypes.array.isRequired,
+	saveUserState: PropTypes.func.isRequired
 };
 
 export default Routes;

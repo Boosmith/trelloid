@@ -1,14 +1,15 @@
 import React from "react";
 
-function withProps(WrappedComponent, data) {
+function withProps(WrappedComponent) {
 	class WithProps extends React.Component {
 		constructor(props) {
 			super(props);
 		}
 
 		render() {
-			const {...passThroughProps} = this.props;
-			return <WrappedComponent data={data} {...passThroughProps}/>;
+			debugger;
+			// const {...passThroughProps} = this.props;
+			return <WrappedComponent {...this.props}/>;
 		}
 
 	}

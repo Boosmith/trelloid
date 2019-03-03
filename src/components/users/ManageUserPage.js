@@ -14,12 +14,13 @@ class ManageUserPage extends React.Component {
 				lastName: ''
 			}
 		};
+		this.saveUser = this.saveUser.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
 
 	componentDidMount() {
 		const uid = this.props.match.params.uid;
-		const user = getUserById(this.props.data.users, uid);
+		const user = getUserById(this.props.users, uid);
 		this.setState({user: Object.assign({}, user)});
 	}
 
@@ -30,8 +31,9 @@ class ManageUserPage extends React.Component {
 		this.setState({user: user});
 	}
 
-	saveUserState(event) {
-		return this.state;
+	saveUser(event) {
+		event.preventDefault();
+		this.props.saveUserState(this.state.user);
 	}
 
 
@@ -39,7 +41,7 @@ class ManageUserPage extends React.Component {
 		return (
 			<UserForm
 				user={this.state.user}
-				onSave={this.saveUserState}
+				onSave={this.saveUser}
 				onChange={this.handleChange}
 				errors={{}}
 				saving={false}
@@ -56,7 +58,8 @@ function getUserById(users, id) {
 
 ManageUserPage.propTypes = {
 	match: PropTypes.object.isRequired,
-	data: PropTypes.object.isRequired
+	users: PropTypes.array.isRequired,
+	saveUserState: PropTypes.func.isRequired
 };
 
 export default ManageUserPage;

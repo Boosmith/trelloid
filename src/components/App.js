@@ -25,6 +25,17 @@ class App extends React.Component {
 				}
 			]
 		};
+
+		this.saveUserState = this.saveUserState.bind(this);
+	}
+
+	saveUserState(user) {
+		if (user.id) {
+			const users = Object.assign({}.this.state.users);
+			const existingUserIndex = users.findIndex(a => a.id == user.id);
+			users.splice(existingUserIndex, 1, user);
+			this.setState({users: users});
+		}
 	}
 
 	render() {
@@ -32,7 +43,7 @@ class App extends React.Component {
 		return (
 			<div className="container-fluid">
 				<Header/>
-				<Routes users={users}/>
+				<Routes users={users} saveUserState={this.saveUserState}/>
 			</div>
 		);
 	}
