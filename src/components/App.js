@@ -4,7 +4,7 @@ import Routes from './common/Routes';
 
 
 class App extends React.Component {
-	constructor(props, context) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			users: [

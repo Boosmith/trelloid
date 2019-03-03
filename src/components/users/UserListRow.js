@@ -5,10 +5,7 @@ import {Link} from 'react-router-dom';
 const UserListRow = ({user}) => {
 	return (
 		<tr>
-			<td><Link to={'/users/' + user.id}>{user.title}</Link></td>
-			<td>{user.id}</td>
-			<td>{user.firstName}</td>
-			<td>{user.lastName}</td>
+			<td><Link to={'/users/' + user.id}>{user.firstName + ' ' + user.lastName}</Link></td>
 		</tr>
 	);
 };
