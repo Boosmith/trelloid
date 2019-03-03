@@ -8,9 +8,13 @@ class ManageUserPage extends React.Component {
 		super(props);
 
 		this.state = {
-			user: {}
+			user: {
+				id: '',
+				firstName: '',
+				lastName: ''
+			}
 		};
-		this.updateUserState = this.updateUserState.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
 
 	componentDidMount() {
@@ -19,11 +23,11 @@ class ManageUserPage extends React.Component {
 		this.setState({user: Object.assign({}, user)});
 	}
 
-	updateUserState(event) {
+	handleChange(event) {
 		const field = event.target.name;
 		let user = Object.assign({}, this.state.user);
 		user[field] = event.target.value;
-		return this.setState({user: user});
+		this.setState({user: user});
 	}
 
 	saveUserState(event) {
@@ -36,7 +40,7 @@ class ManageUserPage extends React.Component {
 			<UserForm
 				user={this.state.user}
 				onSave={this.saveUserState}
-				onChange={this.updateUserState}
+				onChange={this.handleChange}
 				errors={{}}
 				saving={false}
 			/>
