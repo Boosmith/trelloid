@@ -9,24 +9,23 @@ class App extends React.Component {
 		this.state = {
 			users: [
 				{
-					id: 1,
+					id: '1',
 					firstName: 'Andrew',
 					lastName: 'Smith'
 				},
 				{
-					id: 2,
+					id: '2',
 					firstName: 'Joe',
 					lastName: 'Bloggs'
 				},
 				{
-					id: 3,
+					id: '3',
 					firstName: 'Jane',
 					lastName: 'Doe'
 				}
 			]
 		};
 	}
-
 
 	render() {
 		const users = this.state.users;

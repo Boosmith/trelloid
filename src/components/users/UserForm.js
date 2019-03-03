@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from 'prop-types';
 import TextInput from '../common/TextInput';
 
-function UserForm(user, onSave, onChange, saving, errors) {
+function UserForm({user, onSave, onChange, saving, errors}) {
+	// debugger;
 	return (
 		<form>
 			<h1>Manage User</h1>
@@ -10,7 +11,7 @@ function UserForm(user, onSave, onChange, saving, errors) {
 				name="firstName"
 				label="First name"
 				value={user.firstName}
-				onChange={onChange}
+				/*onChange={onChange}*/
 				error={errors.firstName}/>
 
 
@@ -18,7 +19,7 @@ function UserForm(user, onSave, onChange, saving, errors) {
 				name="lastName"
 				label="Last name"
 				value={user.lastName}
-				onChange={onChange}
+				/*onChange={onChange}*/
 				error={errors.lastName}/>
 
 

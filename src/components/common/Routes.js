@@ -15,11 +15,13 @@ class Routes extends React.Component {
 
 	render() {
 		const UsersPageWithProps = withProps(UsersPage, this.props);
+		const ManageUserPageWithProps = withProps(ManageUserPage, this.props);
+
 		return (
 			<Switch>
 				<Route path="/" exact component={HomePage}/>
 				<Route path="/users" exact component={UsersPageWithProps}/>
-				{/*<Route path="/users/:uid" exact render={this.ComponentWithProps(ManageUserPage)}/>*/}
+				<Route path="/users/:uid" exact component={ManageUserPageWithProps}/>
 				<Route path="/about" exact component={AboutPage}/>
 			</Switch>
 		);

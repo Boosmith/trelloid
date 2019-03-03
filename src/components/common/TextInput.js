@@ -17,7 +17,7 @@ function TextInput({name, label, onChange, placeholder, value, error}) {
 					className="form-control"
 					placeholder={placeholder}
 					value={value}
-					onChange={onChange}/>
+					/*onChange={onChange}*//>
 				{error && <div className="alert alert-danger">{error}</div>}
 			</div>
 		</div>
@@ -27,7 +27,7 @@ function TextInput({name, label, onChange, placeholder, value, error}) {
 TextInput.propTypes = {
 	name: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
-	onChange: PropTypes.func.isRequired,
+	/*onChange: PropTypes.func.isRequired,*/
 	placeholder: PropTypes.string,
 	value: PropTypes.string,
 	error: PropTypes.string
