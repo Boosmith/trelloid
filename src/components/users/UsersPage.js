@@ -9,7 +9,7 @@ class UsersPage extends React.Component {
 	}
 
 	render() {
-		const {users} = this.props.data;
+		const {users} = this.props;
 		return (
 			<div>
 				<h1>Users</h1>
@@ -20,7 +20,7 @@ class UsersPage extends React.Component {
 }
 
 UsersPage.propTypes = {
-	data: PropTypes.object.isRequired
+	users: PropTypes.array.isRequired
 };
 
 

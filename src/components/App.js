@@ -31,7 +31,7 @@ class App extends React.Component {
 
 	saveUserState(user) {
 		if (user.id) {
-			const users = Object.assign({}.this.state.users);
+			const users = this.state.users;
 			const existingUserIndex = users.findIndex(a => a.id == user.id);
 			users.splice(existingUserIndex, 1, user);
 			this.setState({users: users});
