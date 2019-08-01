@@ -1,7 +1,7 @@
 {
-  "name": "react-node-go-machine-learning",
+  "name": "trelloid",
   "version": "0.1.0",
-  "description": "Application to upload data for machine learning",
+  "description": "Drag and drop project management tool.",
   "main": "index.js",
   "scripts": {
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
