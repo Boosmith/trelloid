@@ -1,7 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import UserForm from '../users/UserForm';
-
+import React from "react";
+import PropTypes from "prop-types";
+import UserForm from "../users/UserForm";
+import { connect } from "react-redux";
+import * as userActions from "../../redux/actions/userActions";
 
 class ManageUserPage extends React.Component {
 	constructor(props) {
@@ -9,9 +10,9 @@ class ManageUserPage extends React.Component {
 
 		this.state = {
 			user: {
-				id: '',
-				firstName: '',
-				lastName: ''
+				id: "",
+				firstName: "",
+				lastName: ""
 			}
 		};
 		this.saveUser = this.saveUser.bind(this);
@@ -21,21 +22,18 @@ class ManageUserPage extends React.Component {
 	componentDidMount() {
 		const uid = this.props.match.params.uid;
 		const user = getUserById(this.props.users, uid);
-		this.setState({user: Object.assign({}, user)});
+		this.setState({ user: Object.assign({}, user) });
 	}
 
 	handleChange(event) {
-		const field = event.target.name;
-		let user = Object.assign({}, this.state.user);
-		user[field] = event.target.value;
-		this.setState({user: user});
+		const user = { ...this.state.user, title: event.target.value };
+		this.setState({ user: user });
 	}
 
 	saveUser(event) {
 		event.preventDefault();
-		this.props.saveUserState(this.state.user);
+		this.props.createUser(this.state.user);
 	}
-
 
 	render() {
 		return (
@@ -56,11 +54,23 @@ function getUserById(users, id) {
 	return null;
 }
 
+function mapStateToProps(state) {
+	return {
+		users: state.users
+	};
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		createUser: user => dispatch(userActions.createUser(user))
+	};
+}
+
 ManageUserPage.propTypes = {
+	createUser: PropTypes.func.isRequired,
 	match: PropTypes.object.isRequired,
 	users: PropTypes.array.isRequired,
 	saveUserState: PropTypes.func.isRequired
 };
 
-export default ManageUserPage;
-
+export default connect(mapStateToProps, mapDispatchToProps)(ManageUserPage);

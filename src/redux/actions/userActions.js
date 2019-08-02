@@ -1,3 +1,4 @@
+import * as actionTypes from "./actionTypes";
 export function createUser(user) {
-	return { type: "CREATE_USER", user};
+	return { type: actionTypes.CREATE_USER, user };
 }
