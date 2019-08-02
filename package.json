@@ -4,14 +4,10 @@
 	"description": "Drag and drop project management tool.",
 	"main": "index.js",
 	"scripts": {
-		"lint": "node_modules/.bin/esw webpack.config.* src tools",
-		"lint:watch": "npm run lint -- --watch",
-		"open:src": "babel-node tools/srcServer.js",
-		"prestart": "babel-node tools/startMessage.js",
 		"prestart:api": "node tools/createMockDb.js",
 		"start:api": "node tools/apiServer.js",
 		"start:dev": "webpack-dev-server --config webpack.config.dev.js --port 3000",
-		"start": "npm-run-all --parallel open:src lint:watch test:watch",
+		"start": "run-p start:dev start:api",
 		"test": "mocha --reporter progress tools/testSetup.js \"src/**/*.test.js\"",
 		"test:watch": "npm run test -- -watch"
 	},
