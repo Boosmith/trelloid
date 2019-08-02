@@ -1,19 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import UserListRow from './UserListRow';
+import React from "react";
+import PropTypes from "prop-types";
+import UserListRow from "./UserListRow";
 
-const UserList = ({users}) => {
+const UserList = ({ users }) => {
 	return (
 		<table className="table">
 			<thead>
-			<tr>
-				<th>Name</th>
-			</tr>
+				<tr>
+					<th>Name</th>
+				</tr>
 			</thead>
 			<tbody>
-			{users.map(user =>
-				<UserListRow key={user.id} user={user}/>
-			)}
+				{users.map(user => (
+					<UserListRow key={user._id} user={user} />
+				))}
 			</tbody>
 		</table>
 	);

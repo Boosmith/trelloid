@@ -1,5 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
-export default function userReducer(state = [], action) {
+import initialState from "./initialState";
+
+export default function userReducer(state = initialState.users, action) {
 	switch (action.type) {
 		case actionTypes.CREATE_USER:
 			return [...state, { ...action.user }];
