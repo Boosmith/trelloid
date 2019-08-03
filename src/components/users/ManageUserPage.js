@@ -1,76 +1,65 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import UserForm from "../users/UserForm";
 import { connect } from "react-redux";
 import * as userActions from "../../redux/actions/userActions";
+import { newUser } from "../../../tools/mockData";
 
-class ManageUserPage extends React.Component {
-	constructor(props) {
-		super(props);
+function ManageUserPage({ users, loadUsers, saveUser, ...props }) {
+	const [user, setUser] = useState({ ...props.user });
+	const [errors, setErrors] = useState({});
+	useEffect(() => {
+		if (users.length === 0) {
+			loadUsers().catch(err => {
+				alert("Loading courses failed");
+			});
+		}
+	}, []);
 
-		this.state = {
-			user: {
-				id: "",
-				firstName: "",
-				lastName: ""
-			}
-		};
-		this.saveUser = this.saveUser.bind(this);
-		this.handleChange = this.handleChange.bind(this);
+	function handleChange(event) {
+		const { name, value } = event.target;
+		setUser(prevUser => ({
+			...prevUser,
+			[name]: value
+		}));
 	}
 
-	componentDidMount() {
-		const uid = this.props.match.params.uid;
-		const user = getUserById(this.props.users, uid);
-		this.setState({ user: Object.assign({}, user) });
-	}
-
-	handleChange(event) {
-		const user = { ...this.state.user, title: event.target.value };
-		this.setState({ user: user });
-	}
-
-	saveUser(event) {
+	function handleSave(event) {
 		event.preventDefault();
-		this.props.createUser(this.state.user);
+		saveUser(user);
 	}
 
-	render() {
-		return (
-			<UserForm
-				user={this.state.user}
-				onSave={this.saveUser}
-				onChange={this.handleChange}
-				errors={{}}
-				saving={false}
-			/>
-		);
-	}
-}
-
-function getUserById(users, id) {
-	const user = users.filter(user => user.id === id);
-	if (user.length) return user[0];
-	return null;
+	return (
+		<UserForm
+			user={user}
+			onChange={handleChange}
+			onSave={handleSave}
+			errors={errors}
+		/>
+	);
 }
 
 function mapStateToProps(state) {
 	return {
+		user: newUser,
 		users: state.users
 	};
 }
 
-function mapDispatchToProps(dispatch) {
-	return {
-		createUser: user => dispatch(userActions.createUser(user))
-	};
-}
-
-ManageUserPage.propTypes = {
-	createUser: PropTypes.func.isRequired,
-	match: PropTypes.object.isRequired,
-	users: PropTypes.array.isRequired,
-	saveUserState: PropTypes.func.isRequired
+const mapDispatchToProps = {
+	loadUsers: userActions.loadUsers,
+	saveUser: userActions.saveUser
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageUserPage);
+ManageUserPage.propTypes = {
+	loadUsers: PropTypes.func.isRequired,
+	match: PropTypes.object.isRequired,
+	saveUser: PropTypes.func.isRequired,
+	user: PropTypes.object.isRequired,
+	users: PropTypes.array.isRequired
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(ManageUserPage);

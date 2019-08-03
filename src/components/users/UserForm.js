@@ -1,43 +1,42 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import TextInput from '../common/TextInput';
+import PropTypes from "prop-types";
+import TextInput from "../common/TextInput";
 
-function UserForm({user, onSave, onChange, saving, errors}) {
+const UserForm = ({ user, errors, onSave, saving, onChange }) => {
 	return (
-		<form>
+		<form onSubmit={onSave}>
 			<h1>Manage User</h1>
 			<TextInput
 				name="firstName"
 				label="First name"
 				value={user.firstName}
 				onChange={onChange}
-				error={errors.firstName}/>
-
+				error={errors.firstName}
+			/>
 
 			<TextInput
 				name="lastName"
 				label="Last name"
 				value={user.lastName}
 				onChange={onChange}
-				error={errors.lastName}/>
-
+				error={errors.lastName}
+			/>
 
 			<input
 				type="submit"
 				disabled={saving}
-				value={saving ? 'Saving...' : 'Save'}
+				value={saving ? "Saving..." : "Save"}
 				className="btn btn-primary"
-				onClick={onSave}/>
+			/>
 		</form>
 	);
-}
-
+};
 
 UserForm.propTypes = {
 	user: PropTypes.object.isRequired,
-	onSave: PropTypes.func.isRequired,
 	onChange: PropTypes.func.isRequired,
-	saving: PropTypes.bool,
+	onSave: PropTypes.func.isRequired,
+	saving: PropTypes.func.isRequired,
 	errors: PropTypes.object
 };
 

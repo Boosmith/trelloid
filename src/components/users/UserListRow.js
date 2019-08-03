@@ -6,7 +6,7 @@ const UserListRow = ({ user }) => {
 	return (
 		<tr>
 			<td>
-				<Link to={"/users/" + user._id}>
+				<Link to={"/user/" + user._id}>
 					{user.firstName + " " + user.lastName}
 				</Link>
 			</td>
