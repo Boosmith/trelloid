@@ -94,7 +94,7 @@ const users = [
 ];
 
 const newUser = {
-	_id: new ObjectId().toString(),
+	_id: "",
 	firstName: "",
 	lastName: "",
 	address: "",
