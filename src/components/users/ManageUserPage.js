@@ -6,31 +6,31 @@ import * as userActions from "../../redux/actions/userActions";
 import { newUser } from "../../../tools/mockData";
 
 function ManageUserPage({ users, loadUsers, saveUser, ...props }) {
-	// const [user, setUser] = useState({ ...props.user });
-	// const [errors, setErrors] = useState({});
+	const [user, setUser] = useState({ ...props.user });
+	const [errors, setErrors] = useState({});
 	useEffect(() => {
 		if (users.length === 0) {
 			loadUsers().catch(err => {
 				alert("Loading users failed");
 			});
 		} else {
-			// setUser({ ...props.user });
+			setUser({ ...props.user });
 		}
-	}, []);
+	});
 
 	function handleChange(event) {
 		const { name, value } = event.target;
-		// setUser(prevUser => ({
-		// 	...prevUser,
-		// 	[name]: value
-		// }));
+		setUser(prevUser => ({
+			...prevUser,
+			[name]: value
+		}));
 	}
 
 	function handleSave(event) {
 		event.preventDefault();
-		// saveUser(user).catch(err => {
-		// 	alert("Failed to save user");
-		// });
+		saveUser(user).catch(err => {
+			alert("Failed to save user");
+		});
 	}
 
 	return (
