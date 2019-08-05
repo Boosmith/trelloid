@@ -19,12 +19,6 @@ class ManageUserPage extends React.Component {
 		this.handleSave = this.handleSave.bind(this);
 	}
 
-	componentDidUpdate(prevProps) {
-		if (this.props.user._id !== prevProps.user._id) {
-			this.setState({ user: Object.assign({}, this.props.user) });
-		}
-	}
-
 	handleChange(event) {
 		const { name, value } = event.target;
 		let user = Object.assign({}, this.state.user);
@@ -34,9 +28,14 @@ class ManageUserPage extends React.Component {
 
 	handleSave(event) {
 		event.preventDefault();
-		this.props.actions.saveUser(this.state.user).catch(err => {
-			alert("Failed to save user");
-		});
+		this.props.actions
+			.saveUser(this.state.user)
+			.then(() => {
+				this.props.history.push("/users");
+			})
+			.catch(err => {
+				alert("Failed to save user");
+			});
 	}
 	render() {
 		return (
@@ -51,7 +50,8 @@ class ManageUserPage extends React.Component {
 }
 
 function getUserById(users, id) {
-	return users.filter(user => (user._id = id)) || null;
+	const filteredUsers = users.filter(user => user._id === id) || null;
+	return filteredUsers;
 }
 
 function mapStateToProps(state, ownProps) {
@@ -60,8 +60,7 @@ function mapStateToProps(state, ownProps) {
 	const user = userId ? getUserById(state.users, userId) : newUser;
 
 	return {
-		user: user,
-		users: state.users
+		user: user[0]
 	};
 }
 
@@ -70,9 +69,9 @@ const mapDispatchToProps = dispatch => ({
 });
 
 ManageUserPage.propTypes = {
-	user: PropTypes.object.isRequired,
-	users: PropTypes.array.isRequired,
-	actions: PropTypes.object.isRequired
+	actions: PropTypes.object.isRequired,
+	history: PropTypes.object.isRequired,
+	user: PropTypes.object.isRequired
 };
 
 export default connect(

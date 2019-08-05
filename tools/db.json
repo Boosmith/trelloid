@@ -6,7 +6,7 @@
       "lastName": "Smith",
       "address": "32 Walpole Road",
       "city": "London",
-      "postcode": "N17",
+      "postcode": "N20",
       "__v": 0
     },
     {
@@ -47,11 +47,11 @@
     },
     {
       "_id": "5d42104a7979bd071c129607",
-      "firstName": "Boo",
-      "lastName": "Smith",
-      "address": "32 Walpole Road",
-      "city": "London",
-      "postcode": "N17",
+      "firstName": "Alma",
+      "lastName": "Fitzgerald",
+      "address": "1630 Zuas Place",
+      "city": "Caturaagu",
+      "postcode": "G9E 7N0",
       "__v": 0
     },
     {
@@ -89,16 +89,6 @@
       "city": "Kivzupzi",
       "postcode": "J5C 8H1",
       "__v": 0
-    },
-    {
-      "firstName": "Joe",
-      "lastName": "Bloggs",
-      "address": "32 Walpole Road",
-      "city": "London",
-      "postcode": "N17",
-      "__v": 0,
-      "createdAt": 1565006290435,
-      "_id": "5d4819d283cafa89a2b53ce8"
     }
   ]
 }

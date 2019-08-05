@@ -9,7 +9,7 @@ export default function userReducer(state = initialState.users, action) {
 			return action.users;
 		case actionTypes.UPDATE_USER_SUCCESS:
 			return state.map(user =>
-				user._id === action.user_id ? action.user : user
+				user._id === action.user._id ? action.user : user
 			);
 		default:
 			return state;
