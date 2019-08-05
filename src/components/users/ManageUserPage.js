@@ -19,11 +19,6 @@ class ManageUserPage extends React.Component {
 		this.handleSave = this.handleSave.bind(this);
 	}
 
-	componentDidMount() {
-		this.props.actions.loadUsers().catch(err => {
-			alert("Loading users failed.");
-		});
-	}
 	componentDidUpdate(prevProps) {
 		if (this.props.user._id !== prevProps.user._id) {
 			this.setState({ user: Object.assign({}, this.props.user) });
@@ -56,21 +51,17 @@ class ManageUserPage extends React.Component {
 }
 
 function getUserById(users, id) {
-	const user = users.filter(user => (user._id = id));
-	if (user.length) return user[0];
-	return null;
+	return users.filter(user => (user._id = id)) || null;
 }
 
 function mapStateToProps(state, ownProps) {
 	const userId = ownProps.match.params.uid;
 
-	let user = newUser;
+	const user = userId ? getUserById(state.users, userId) : newUser;
 
-	if (userId && state.users.length > 0) {
-		user = getUserById(state.users, userId);
-	}
 	return {
-		user: user
+		user: user,
+		users: state.users
 	};
 }
 
@@ -80,6 +71,7 @@ const mapDispatchToProps = dispatch => ({
 
 ManageUserPage.propTypes = {
 	user: PropTypes.object.isRequired,
+	users: PropTypes.array.isRequired,
 	actions: PropTypes.object.isRequired
 };
 

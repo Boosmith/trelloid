@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const UserListRow = ({ user }) => {
 	return (
-		<tr>
+		<tr key={user._id}>
 			<td>
 				<Link to={"/user/" + user._id}>
 					{user.firstName + " " + user.lastName}
