@@ -103,7 +103,7 @@ const newUser = {
 	__v: 0
 };
 
-const createObjectId = (module.exports = {
+module.exports = {
 	newUser,
 	users
-});
+};

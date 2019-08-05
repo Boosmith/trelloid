@@ -4,63 +4,78 @@ import UserForm from "../users/UserForm";
 import { connect } from "react-redux";
 import * as userActions from "../../redux/actions/userActions";
 import { newUser } from "../../../tools/mockData";
+import { bindActionCreators } from "redux";
 
-function ManageUserPage({ users, loadUsers, saveUser, ...props }) {
-	const [user, setUser] = useState({ ...props.user });
-	const [errors, setErrors] = useState({});
-	useEffect(() => {
-		if (users.length === 0) {
-			loadUsers().catch(err => {
-				alert("Loading users failed");
-			});
-		} else {
-			setUser({ ...props.user });
-		}
-	});
+class ManageUserPage extends React.Component {
+	constructor(props, context) {
+		super(props, context);
 
-	function handleChange(event) {
-		const { name, value } = event.target;
-		setUser(prevUser => ({
-			...prevUser,
-			[name]: value
-		}));
+		this.state = {
+			user: Object.assign({}, this.props.user),
+			errors: {},
+			saving: false
+		};
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSave = this.handleSave.bind(this);
 	}
 
-	function handleSave(event) {
+	componentDidUpdate(prevProps) {
+		if (this.props.user._id !== prevProps.user._id) {
+			this.setState({ user: Object.assign({}, this.props.user) });
+		}
+	}
+
+	handleChange(event) {
+		const { name, value } = event.target;
+		let user = Object.assign({}, this.state.user);
+		user[name] = value;
+		return this.setState({ user: user });
+	}
+
+	handleSave(event) {
 		event.preventDefault();
-		saveUser(user).catch(err => {
+		this.props.actions.saveUser(this.state.user).catch(err => {
 			alert("Failed to save user");
 		});
 	}
-
-	return (
-		<UserForm
-			user={{}}
-			onChange={handleChange}
-			onSave={handleSave}
-			errors={{}}
-		/>
-	);
+	render() {
+		return (
+			<UserForm
+				user={this.state.user}
+				onChange={this.handleChange}
+				onSave={this.handleSave}
+				errors={this.state.errors}
+			/>
+		);
+	}
 }
 
-function mapStateToProps(state) {
+function getUserById(users, id) {
+	const user = users.filter(user => (user._id = id));
+	if (user.length) return user[0];
+	return null;
+}
+
+function mapStateToProps(state, ownProps) {
+	const userId = ownProps.match.params.uid;
+
+	let user = newUser;
+
+	// if (userId && state.users.length > 0) {
+	// 	user = getUserById(state.users, userId);
+	// }
 	return {
-		user: newUser,
-		users: state.users
+		user: user
 	};
 }
 
-const mapDispatchToProps = {
-	loadUsers: userActions.loadUsers,
-	saveUser: userActions.saveUser
-};
+const mapDispatchToProps = dispatch => ({
+	actions: bindActionCreators(userActions, dispatch)
+});
 
 ManageUserPage.propTypes = {
-	loadUsers: PropTypes.func.isRequired,
-	match: PropTypes.object.isRequired,
-	saveUser: PropTypes.func.isRequired,
 	user: PropTypes.object.isRequired,
-	users: PropTypes.array.isRequired
+	actions: PropTypes.object.isRequired
 };
 
 export default connect(
