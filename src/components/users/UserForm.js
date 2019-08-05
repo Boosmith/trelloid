@@ -22,6 +22,29 @@ const UserForm = ({ user, onChange, onSave, errors }) => {
 				error={errors.lastName}
 			/>
 
+			<TextInput
+				name="address"
+				label="Address"
+				value={user.address}
+				onChange={onChange}
+				error={errors.address}
+			/>
+
+			<TextInput
+				name="city"
+				label="City"
+				value={user.city}
+				onChange={onChange}
+				error={errors.city}
+			/>
+
+			<TextInput
+				name="postcode"
+				label="Postcode"
+				value={user.postcode}
+				onChange={onChange}
+				error={errors.postcode}
+			/>
 			<input type="submit" value="Save" className="btn btn-primary" />
 		</form>
 	);
