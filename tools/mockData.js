@@ -1,5 +1,3 @@
-const ObjectId = require("bson").ObjectID;
-
 const users = [
 	{
 		_id: "5d42e5d5e1e3d731df26010a",
