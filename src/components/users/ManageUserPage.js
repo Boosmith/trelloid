@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import UserForm from "../users/UserForm";
 import { connect } from "react-redux";
 import * as userActions from "../../redux/actions/userActions";
-import { newUser } from "../../../tools/mockData";
 import { bindActionCreators } from "redux";
 
 class ManageUserPage extends React.Component {
@@ -17,6 +16,12 @@ class ManageUserPage extends React.Component {
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSave = this.handleSave.bind(this);
+	}
+
+	componentDidUpdate(prevProps) {
+		if (prevProps.user._id !== this.props.user._id) {
+			this.setState({ user: Object.assign({}, this.props.user) });
+		}
 	}
 
 	handleChange(event) {
@@ -50,17 +55,28 @@ class ManageUserPage extends React.Component {
 }
 
 function getUserById(users, id) {
-	const filteredUsers = users.filter(user => user._id === id) || null;
-	return filteredUsers;
+	return users.find(user => user._id === id) || null;
 }
 
 function mapStateToProps(state, ownProps) {
 	const userId = ownProps.match.params.uid;
+	const newUser = {
+		_id: "",
+		firstName: "",
+		lastName: "",
+		address: "",
+		city: "",
+		postcode: "",
+		__v: 0
+	};
 
-	const user = userId ? getUserById(state.users, userId) : newUser;
+	const user =
+		userId && state.users.length > 0
+			? getUserById(state.users, userId)
+			: newUser;
 
 	return {
-		user: user[0]
+		user: user
 	};
 }
 
