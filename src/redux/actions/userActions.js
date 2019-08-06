@@ -14,6 +14,10 @@ export function updateUserSuccess(user) {
 	return { type: actionTypes.UPDATE_USER_SUCCESS, user: user };
 }
 
+export function apiCallError(error) {
+	return { type: actionTypes.API_CALL_ERROR, error: error };
+}
+
 export function loadUsers() {
 	return function(dispatch) {
 		dispatch(beginApiCall());
@@ -39,6 +43,7 @@ export function saveUser(user) {
 					: dispatch(createUserSuccess(savedUser));
 			})
 			.catch(err => {
+				dispatch(apiCallError(err));
 				throw err;
 			});
 	};
