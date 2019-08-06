@@ -2,6 +2,10 @@ import * as actionTypes from "./actionTypes";
 import * as userApi from "../../api/userApi";
 import { beginApiCall } from "./apiStatusActions";
 
+export function apiCallError(error) {
+	return { type: actionTypes.API_CALL_ERROR, error: error };
+}
+
 export function createUserSuccess(user) {
 	return { type: actionTypes.CREATE_USER_SUCCESS, user: user };
 }
@@ -14,10 +18,6 @@ export function updateUserSuccess(user) {
 	return { type: actionTypes.UPDATE_USER_SUCCESS, user: user };
 }
 
-export function apiCallError(error) {
-	return { type: actionTypes.API_CALL_ERROR, error: error };
-}
-
 export function loadUsers() {
 	return function(dispatch) {
 		dispatch(beginApiCall());
@@ -27,6 +27,7 @@ export function loadUsers() {
 				dispatch(loadUsersSuccess(users));
 			})
 			.catch(err => {
+				dispatch(apiCallError(err));
 				throw err;
 			});
 	};
