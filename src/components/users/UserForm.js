@@ -5,7 +5,7 @@ import TextInput from "../common/TextInput";
 const UserForm = ({ user, onChange, onSave, errors }) => {
 	return (
 		<form onSubmit={onSave}>
-			<h1>Manage User</h1>
+			<h2>{user._id ? "Edit" : "Add"} User</h2>
 			<TextInput
 				name="firstName"
 				label="First name"
