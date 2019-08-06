@@ -6,6 +6,7 @@ import * as userActions from "../../redux/actions/userActions";
 import { bindActionCreators } from "redux";
 import Loader from "../common/Loader";
 import { toast } from "react-toastify";
+import { objectMethod } from "@babel/types";
 
 class ManageUserPage extends React.Component {
 	constructor(props, context) {
@@ -16,6 +17,7 @@ class ManageUserPage extends React.Component {
 			errors: {},
 			saving: false
 		};
+
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSave = this.handleSave.bind(this);
 	}
@@ -24,6 +26,20 @@ class ManageUserPage extends React.Component {
 		if (prevProps.user._id !== this.props.user._id) {
 			this.setState({ user: Object.assign({}, this.props.user) });
 		}
+	}
+
+	formIsValid() {
+		const { firstName, lastName, address, city, postcode } = this.state.user;
+		const errors = {};
+
+		if (!firstName) errors.firstName = "First name is required";
+		if (!lastName) errors.lastName = "Last name is required";
+		if (!address) errors.address = "Address is required";
+		if (!city) errors.city = "City is required";
+		if (!postcode) errors.postcode = "Postcode is required";
+
+		this.setState({ errors: errors });
+		return Object.keys(errors).length === 0;
 	}
 
 	handleChange(event) {
@@ -35,6 +51,7 @@ class ManageUserPage extends React.Component {
 
 	handleSave(event) {
 		event.preventDefault();
+		if (!this.formIsValid()) return;
 		this.setState({ saving: true });
 		this.props.actions
 			.saveUser(this.state.user)

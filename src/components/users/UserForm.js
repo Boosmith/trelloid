@@ -15,7 +15,6 @@ const UserForm = ({ user, onChange, onSave, saving = false, errors = {} }) => {
 				name="firstName"
 				label="First name"
 				value={user.firstName}
-				s
 				onChange={onChange}
 				error={errors.firstName}
 			/>
