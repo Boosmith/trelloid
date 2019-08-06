@@ -44,16 +44,15 @@ class ManageUserPage extends React.Component {
 			});
 	}
 	render() {
-		return (
-			<>
-				<Loader />
-				<UserForm
-					user={this.state.user}
-					onChange={this.handleChange}
-					onSave={this.handleSave}
-					errors={this.state.errors}
-				/>
-			</>
+		return this.props.users.length === 0 ? (
+			<Loader />
+		) : (
+			<UserForm
+				user={this.state.user}
+				onChange={this.handleChange}
+				onSave={this.handleSave}
+				errors={this.state.errors}
+			/>
 		);
 	}
 }
@@ -80,7 +79,8 @@ function mapStateToProps(state, ownProps) {
 			: newUser;
 
 	return {
-		user: user
+		user: user,
+		users: state.users
 	};
 }
 
@@ -91,7 +91,8 @@ const mapDispatchToProps = dispatch => ({
 ManageUserPage.propTypes = {
 	actions: PropTypes.object.isRequired,
 	history: PropTypes.object.isRequired,
-	user: PropTypes.object.isRequired
+	user: PropTypes.object.isRequired,
+	users: PropTypes.array.isRequired
 };
 
 export default connect(
