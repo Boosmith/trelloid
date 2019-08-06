@@ -6,6 +6,7 @@ import { bindActionCreators } from "redux";
 import * as userActions from "../../redux/actions/userActions";
 import { Redirect } from "react-router-dom";
 import Loader from "../common/Loader";
+import { toast } from "react-toastify";
 
 class UsersPage extends React.Component {
 	constructor(props) {
@@ -13,10 +14,14 @@ class UsersPage extends React.Component {
 		this.state = {
 			redirectToAddUserPage: false
 		};
-
+		this.handleDeleteUser = this.handleDeleteUser.bind(this);
 		this.redirectToAddUserPage = this.redirectToAddUserPage.bind(this);
 	}
 
+	handleDeleteUser(user) {
+		toast.success("Course deleted");
+		this.props.actions.deleteUser(user);
+	}
 	redirectToAddUserPage() {
 		this.setState({ redirectToAddUserPage: true });
 	}
@@ -35,7 +40,10 @@ class UsersPage extends React.Component {
 						>
 							Add User
 						</button>
-						<UserList users={this.props.users} />
+						<UserList
+							onDeleteClick={this.handleDeleteUser}
+							users={this.props.users}
+						/>
 					</>
 				)}
 			</div>

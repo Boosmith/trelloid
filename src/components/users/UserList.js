@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import UserListRow from "./UserListRow";
 
-const UserList = ({ users }) => {
+const UserList = ({ onDeleteClick, users }) => {
 	return (
 		<table className="table">
 			<thead>
@@ -12,7 +12,11 @@ const UserList = ({ users }) => {
 			</thead>
 			<tbody>
 				{users.map(user => (
-					<UserListRow key={user._id} user={user} />
+					<UserListRow
+						key={user._id}
+						onDeleteClick={onDeleteClick}
+						user={user}
+					/>
 				))}
 			</tbody>
 		</table>
@@ -20,6 +24,7 @@ const UserList = ({ users }) => {
 };
 
 UserList.propTypes = {
+	onDeleteClick: PropTypes.func.isRequired,
 	users: PropTypes.array.isRequired
 };
 
