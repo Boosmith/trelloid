@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import * as userActions from "../../redux/actions/userActions";
 import { bindActionCreators } from "redux";
 import Loader from "../common/Loader";
+import { toast } from "react-toastify";
 
 class ManageUserPage extends React.Component {
 	constructor(props, context) {
@@ -38,6 +39,7 @@ class ManageUserPage extends React.Component {
 		this.props.actions
 			.saveUser(this.state.user)
 			.then(() => {
+				toast.success("User saved");
 				this.props.history.push("/users");
 			})
 			.catch(err => {
