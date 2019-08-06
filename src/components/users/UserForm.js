@@ -2,14 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import TextInput from "../common/TextInput";
 
-const UserForm = ({ user, onChange, onSave, saving, errors }) => {
+const UserForm = ({ user, onChange, onSave, saving = false, errors = {} }) => {
 	return (
 		<form onSubmit={onSave}>
 			<h2>{user._id ? "Edit" : "Add"} User</h2>
+			{errors.onSave && (
+				<div className="alert alert-danger" role="alert">
+					{errors.onSave}
+				</div>
+			)}
 			<TextInput
 				name="firstName"
 				label="First name"
 				value={user.firstName}
+				s
 				onChange={onChange}
 				error={errors.firstName}
 			/>

@@ -30,7 +30,7 @@ class ManageUserPage extends React.Component {
 		const { name, value } = event.target;
 		let user = Object.assign({}, this.state.user);
 		user[name] = value;
-		return this.setState({ user: user });
+		this.setState({ user: user });
 	}
 
 	handleSave(event) {
@@ -42,8 +42,13 @@ class ManageUserPage extends React.Component {
 				toast.success("User saved");
 				this.props.history.push("/users");
 			})
-			.catch(err => {
-				alert("Failed to save user");
+			.catch(error => {
+				this.setState({
+					errors: {
+						onSave: error.message
+					},
+					saving: false
+				});
 			});
 	}
 	render() {
