@@ -16,13 +16,6 @@ class UsersPage extends React.Component {
 
 		this.redirectToAddUserPage = this.redirectToAddUserPage.bind(this);
 	}
-	componentDidMount() {
-		if (this.props.users.length === 0) {
-			this.props.actions.loadUsers().catch(err => {
-				alert("Loading users failed.");
-			});
-		}
-	}
 
 	redirectToAddUserPage() {
 		this.setState({ redirectToAddUserPage: true });
