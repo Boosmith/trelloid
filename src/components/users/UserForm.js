@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import TextInput from "../common/TextInput";
 
-const UserForm = ({ user, onChange, onSave, errors }) => {
+const UserForm = ({ user, onChange, onSave, saving, errors }) => {
 	return (
 		<form onSubmit={onSave}>
 			<h2>{user._id ? "Edit" : "Add"} User</h2>
@@ -45,16 +45,19 @@ const UserForm = ({ user, onChange, onSave, errors }) => {
 				onChange={onChange}
 				error={errors.postcode}
 			/>
-			<input type="submit" value="Save" className="btn btn-primary" />
+			<button type="submit" disabled={saving} className="btn btn-primary">
+				{saving ? "Saving..." : "Save"}
+			</button>
 		</form>
 	);
 };
 
 UserForm.propTypes = {
-	user: PropTypes.object.isRequired,
+	errors: PropTypes.object,
 	onChange: PropTypes.func.isRequired,
 	onSave: PropTypes.func.isRequired,
-	errors: PropTypes.object
+	saving: PropTypes.bool.isRequired,
+	user: PropTypes.object.isRequired
 };
 
 export default UserForm;

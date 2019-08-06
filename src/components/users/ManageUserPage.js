@@ -34,6 +34,7 @@ class ManageUserPage extends React.Component {
 
 	handleSave(event) {
 		event.preventDefault();
+		this.setState({ saving: true });
 		this.props.actions
 			.saveUser(this.state.user)
 			.then(() => {
@@ -51,6 +52,7 @@ class ManageUserPage extends React.Component {
 				user={this.state.user}
 				onChange={this.handleChange}
 				onSave={this.handleSave}
+				saving={this.state.saving}
 				errors={this.state.errors}
 			/>
 		);
