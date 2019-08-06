@@ -1,5 +1,6 @@
 import * as actionTypes from "./actionTypes";
 import * as userApi from "../../api/userApi";
+import { beginApiCall } from "./apiStatusActions";
 
 export function createUserSuccess(user) {
 	return { type: actionTypes.CREATE_USER_SUCCESS, user: user };
@@ -15,6 +16,7 @@ export function updateUserSuccess(user) {
 
 export function loadUsers() {
 	return function(dispatch) {
+		dispatch(beginApiCall());
 		return userApi
 			.getUsers()
 			.then(users => {
@@ -28,6 +30,7 @@ export function loadUsers() {
 
 export function saveUser(user) {
 	return function(dispatch) {
+		dispatch(beginApiCall());
 		return userApi
 			.saveUser(user)
 			.then(savedUser => {

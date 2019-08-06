@@ -4,6 +4,7 @@ import UserForm from "../users/UserForm";
 import { connect } from "react-redux";
 import * as userActions from "../../redux/actions/userActions";
 import { bindActionCreators } from "redux";
+import Loader from "../common/Loader";
 
 class ManageUserPage extends React.Component {
 	constructor(props, context) {
@@ -44,12 +45,15 @@ class ManageUserPage extends React.Component {
 	}
 	render() {
 		return (
-			<UserForm
-				user={this.state.user}
-				onChange={this.handleChange}
-				onSave={this.handleSave}
-				errors={this.state.errors}
-			/>
+			<>
+				<Loader />
+				<UserForm
+					user={this.state.user}
+					onChange={this.handleChange}
+					onSave={this.handleSave}
+					errors={this.state.errors}
+				/>
+			</>
 		);
 	}
 }

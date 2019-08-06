@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as userActions from "../../redux/actions/userActions";
 import { Redirect } from "react-router-dom";
+import Loader from "../common/Loader";
 
 class UsersPage extends React.Component {
 	constructor(props) {
@@ -30,14 +31,20 @@ class UsersPage extends React.Component {
 		return (
 			<div>
 				{this.state.redirectToAddUserPage && <Redirect push to="/user" />}
-				<h1>Users</h1>
-				<button
-					className="btn btn-primary"
-					onClick={this.redirectToAddUserPage}
-				>
-					Add User
-				</button>
-				<UserList users={this.props.users} />
+				<h2>Users</h2>
+				{this.props.loading ? (
+					<Loader />
+				) : (
+					<>
+						<button
+							className="btn btn-primary"
+							onClick={this.redirectToAddUserPage}
+						>
+							Add User
+						</button>
+						<UserList users={this.props.users} />
+					</>
+				)}
 			</div>
 		);
 	}
@@ -45,12 +52,14 @@ class UsersPage extends React.Component {
 
 UsersPage.propTypes = {
 	actions: PropTypes.object.isRequired,
+	loading: PropTypes.bool.isRequired,
 	users: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state) {
 	return {
-		users: state.users
+		users: state.users,
+		loading: state.apiCallsInProgress > 0
 	};
 }
 
