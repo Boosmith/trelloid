@@ -1,7 +1,6 @@
 import * as actionTypes from "./actionTypes";
 import * as userApi from "../../api/userApi";
 import { beginApiCall } from "./apiStatusActions";
-import { act } from "react-testing-library";
 
 export function apiCallError(error) {
 	return { type: actionTypes.API_CALL_ERROR, error: error };
