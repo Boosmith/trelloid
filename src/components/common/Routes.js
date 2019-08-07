@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import AboutPage from "../about/AboutPage";
 import HomePage from "../home/HomePage";
 import UsersPage from "../users/UsersPage";
-import ManageUserPage from "../users/ManageUserPage";
+import { default as ManageUserPage } from "../users/ManageUserPage";
 
 class Routes extends React.Component {
 	render() {
