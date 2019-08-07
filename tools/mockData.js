@@ -92,13 +92,11 @@ const users = [
 ];
 
 const newUser = {
-	_id: "",
 	firstName: "",
 	lastName: "",
 	address: "",
 	city: "",
-	postcode: "",
-	__v: 0
+	postcode: ""
 };
 
 module.exports = {
