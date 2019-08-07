@@ -8,7 +8,7 @@ import Loader from "../common/Loader";
 import { toast } from "react-toastify";
 import { objectMethod } from "@babel/types";
 
-class ManageUserPage extends React.Component {
+export class ManageUserPage extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 
