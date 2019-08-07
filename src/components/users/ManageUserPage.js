@@ -6,7 +6,7 @@ import * as userActions from "../../redux/actions/userActions";
 import { bindActionCreators } from "redux";
 import Loader from "../common/Loader";
 import { toast } from "react-toastify";
-import { objectMethod } from "@babel/types";
+import { newUser } from "../../../tools/mockData";
 
 export class ManageUserPage extends React.Component {
 	constructor(props, context) {
@@ -89,15 +89,6 @@ function getUserById(users, id) {
 
 function mapStateToProps(state, ownProps) {
 	const userId = ownProps.match.params.uid;
-	const newUser = {
-		_id: "",
-		firstName: "",
-		lastName: "",
-		address: "",
-		city: "",
-		postcode: "",
-		__v: 0
-	};
 
 	const user =
 		userId && state.users.length > 0

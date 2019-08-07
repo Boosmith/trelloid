@@ -33,7 +33,7 @@ server.post("/users/", function(req, res, next) {
 
 router.db._.id = "_id";
 
-server.use(router);
+server.use("/api", router);
 
 const port = 3001;
 server.listen(port, () => {
