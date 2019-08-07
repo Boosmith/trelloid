@@ -1,28 +1,29 @@
-# README #
+# Trelloid
 
 This repository is for an application to upload test machine learning data then run data against the ML.
-### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+### What is this repository for?
 
-### How do I get set up? ###
+- Quick summary
+- Version
+- [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+### How do I get set up?
 
-### Contribution guidelines ###
+- Summary of set up
+- Configuration
+- Dependencies
+- Database configuration
+- How to run tests
+- Deployment instructions
 
-* Writing tests
-* Code review
-* Other guidelines
+### Contribution guidelines
 
-### Who do I talk to? ###
+- Writing tests
+- Code review
+- Other guidelines
 
-* Repo owner or admin
-* Other community or team contact
+### Who do I talk to?
+
+- Repo owner or admin
+- Other community or team contact

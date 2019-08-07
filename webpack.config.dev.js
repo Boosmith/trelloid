@@ -1,37 +1,46 @@
-import webpack from 'webpack';
-import path from 'path';
+const webpack = require("webpack");
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-export default {
+process.env.NODE_ENV = "development";
+
+module.exports = {
 	mode: "development",
-	devtool: 'inline-source-map',
-	entry: {
-		app: path.resolve(__dirname, 'src/index')
-	},
-	target: 'web',
+	target: "web",
+	devtool: "cheap-module-source-map",
+	entry: ["./src/index"],
 	output: {
-		path: __dirname + '/dist', // Note: Physical files are only output by the production build task `npm run build`.
-		publicPath: '/',
-		filename: 'bundle.js'
+		path: path.resolve(__dirname, "build"),
+		publicPath: "/",
+		filename: "bundle.js"
 	},
 	devServer: {
-		contentBase: path.resolve(__dirname, 'src'),
-		hot: true
+		stats: "minimal",
+		overlay: true,
+		historyApiFallback: true,
+		disableHostCheck: true,
+		headers: { "Access-Control-Allow-Origin": "*" },
+		https: false
 	},
 	plugins: [
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.DefinePlugin({
+			"process.env.API_URL": JSON.stringify("http://localhost:3001")
+		}),
+		new HtmlWebpackPlugin({
+			template: "src/index.html"
+		})
 	],
 	module: {
 		rules: [
-			{test: /\.js$/,
-				include: path.join(__dirname, 'src'),
-				use: ['babel-loader', 'eslint-loader']
+			{
+				test: /\.(js|jsx)$/,
+				exclude: /node_modules/,
+				use: ["babel-loader", "eslint-loader"]
 			},
-			{test: /(\.css)$/, use: ['style-loader', 'css-loader']},
-			{test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
-			{test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000'},
-			{test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
-			{test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'}
+			{
+				test: /(\.css)$/,
+				use: ["style-loader", "css-loader"]
+			}
 		]
 	}
 };
-

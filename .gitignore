@@ -104,3 +104,6 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
+# json-server created files
+tools/db.json
+
