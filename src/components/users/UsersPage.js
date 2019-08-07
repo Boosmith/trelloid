@@ -20,7 +20,9 @@ class UsersPage extends React.Component {
 
 	handleDeleteUser(user) {
 		toast.success("Course deleted");
-		this.props.actions.deleteUser(user);
+		this.props.actions.deleteUser(user).catch(error => {
+			toast.error("Delete failed. " + error.message, { autoClose: false });
+		});
 	}
 	redirectToAddUserPage() {
 		this.setState({ redirectToAddUserPage: true });

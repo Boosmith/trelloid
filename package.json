@@ -15,9 +15,6 @@
 		"serve:build": "http-server -p 3005 ./build"
 	},
 	"jest": {
-		"setupFiles": [
-			"./tools/testSetup.js"
-		],
 		"moduleNameMapper": {
 			"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/fileMock.js",
 			"\\.(css|less)$": "<rootDir>/tools/styleMock.js"
@@ -41,6 +38,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "7.3.4",
+		"@types/jest": "^24.0.17",
 		"babel-eslint": "10.0.1",
 		"babel-loader": "8.0.5",
 		"babel-preset-react-app": "7.0.2",
