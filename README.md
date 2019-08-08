@@ -1,29 +1,71 @@
 # Trelloid
 
-This repository is for an application to upload test machine learning data then run data against the ML.
+A Kanban board application using React and Redux, consuming an [API written in Node.js and Mongoose](https://github.com/Boosmith/api-express-mongo "github.com/Boosmith/api-express-mongo").
 
-### What is this repository for?
+This is a work in progress using the following open source software:
 
-- Quick summary
-- Version
-- [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+- [React](https://reactjs.org)
+- [Redux](https://redux.js.org)
+- [Redux Thunk](https://www.npmjs.com/package/redux-thunk)
+- [Webpack](https://webpack.js.org/)
+- [Jest](https://jestjs.io/)
+- [Enzyme](https://airbnb.io/enzyme/)
+- [Eslint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
 
-### How do I get set up?
+## Getting Started
 
-- Summary of set up
-- Configuration
-- Dependencies
-- Database configuration
-- How to run tests
-- Deployment instructions
+### Prerequisites
 
-### Contribution guidelines
+### Installing
 
-- Writing tests
-- Code review
-- Other guidelines
+## Running the tests
 
-### Who do I talk to?
+### Break down into end to end tests
 
-- Repo owner or admin
-- Other community or team contact
+Explain what these tests test and why
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+- [React](https://reactjs.org)
+- [Redux](https://redux.js.org)
+- [Redux Thunk](https://www.npmjs.com/package/redux-thunk)
+- [Webpack](https://webpack.js.org/)
+- [Jest](https://jestjs.io/)
+- [Enzyme](https://airbnb.io/enzyme/)
+- [Eslint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://github.com/Boosmith/trelloid/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/Boosmith/trelloid/tags).
+
+## Authors
+
+- **Andy Smith** - _Initial work_ - [Boosmith](https://github.com/Boosmith)
+
+See also the list of [contributors](https://github.com/Boosmith/trelloid/contributors) who participated in this project.
+
+## License
+
+## Acknowledgments
+
+- Hat tip to anyone whose code was used
+- Inspiration
+- etc
