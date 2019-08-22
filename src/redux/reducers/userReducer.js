@@ -1,6 +1,5 @@
 import * as actionTypes from "../actions/actionTypes";
 import initialState from "./initialState";
-import { act } from "react-testing-library";
 
 export default function userReducer(state = initialState.users, action) {
 	switch (action.type) {
