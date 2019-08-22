@@ -10,7 +10,7 @@
 		"start:api": "node src/tools/apiServer.js",
 		"test": "react-scripts test",
 		"build": "react-scripts build",
-		"postinstall": "react-scripts build"
+		"postinstall": "REACT_APP_ENV=production react-scripts build"
 	},
 	"eslintConfig": {
 		"extends": "react-app"

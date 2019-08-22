@@ -6,7 +6,7 @@ const dev = {
 
 const prod = {
 	api: {
-		API_URL: "TBC"
+		API_URL: "https://trelloid-api.herokuapp.com"
 	}
 };
 
