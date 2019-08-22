@@ -1,6 +1,5 @@
 import { handleResponse, handleError } from "./apiUtils";
-import config from "../config";
-const baseUrl = config.api.API_URL + "/api/users/";
+const baseUrl = process.env.REACT_APP_API_URL + "/api/users/";
 
 export function getUsers() {
 	return fetch(baseUrl)
