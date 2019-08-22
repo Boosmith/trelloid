@@ -1,10 +1,6 @@
 import React from "react";
 import { Remarkable } from "remarkable";
-import ReactHtmlParser, {
-	processNodes,
-	convertNodeToElement,
-	htmlparser2
-} from "react-html-parser";
+import ReactHtmlParser from "react-html-parser";
 
 const md = new Remarkable();
 const html = md.render(`# Trelloid

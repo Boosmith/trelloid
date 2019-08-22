@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import UserForm from "../users/UserForm";
 import { connect } from "react-redux";
@@ -6,7 +6,7 @@ import * as userActions from "../../redux/actions/userActions";
 import { bindActionCreators } from "redux";
 import Loader from "../common/Loader";
 import { toast } from "react-toastify";
-import { newUser } from "../../../tools/mockData";
+import { newUser } from "../../tools/mockData";
 
 export class ManageUserPage extends React.Component {
 	constructor(props, context) {
