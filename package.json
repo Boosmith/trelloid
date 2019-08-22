@@ -9,9 +9,8 @@
 		"test": "jest --watch",
 		"test:ci": "jest",
 		"clean:build": "rimraf ./build && mkdir build",
-		"prebuild": "run-p clean:build test:ci",
+		"prebuild": "run-p clean:build",
 		"build": "webpack --config webpack.config.prod.js",
-		"postbuild": "npm run serve:build",
 		"serve:build": "http-server -p 3005 ./build"
 	},
 	"jest": {
