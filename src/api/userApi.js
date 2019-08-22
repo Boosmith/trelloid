@@ -1,5 +1,6 @@
 import { handleResponse, handleError } from "./apiUtils";
-const baseUrl = process.env.API_URL + "/api/users/";
+import config from "../config";
+const baseUrl = config.api.API_URL + "/api/users/";
 
 export function getUsers() {
 	return fetch(baseUrl)
