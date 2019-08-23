@@ -1,3 +1,85 @@
+// Cards.
+const cards = [
+	{
+		_id: "5d6020254ea3a4ab3ffc476b",
+		title: "material leather",
+		boardId: "",
+		status: "",
+		ownerId: ""
+	},
+	{
+		_id: "5d602025c1b269d1aeba775d",
+		title: "labor hearing",
+		boardId: "",
+		status: "",
+		ownerId: ""
+	},
+	{
+		_id: "5d6020255c4c086beb74fe3b",
+		title: "struck affect",
+		boardId: "",
+		status: "",
+		ownerId: ""
+	},
+	{
+		_id: "5d602025f80d7c1056749a9a",
+		title: "continent difficulty",
+		boardId: "",
+		status: "",
+		ownerId: ""
+	},
+	{
+		_id: "5d602025d4c222584dabbd78",
+		title: "screen forty",
+		boardId: "",
+		status: "",
+		ownerId: ""
+	},
+	{
+		_id: "5d602025a00dd4be2452e132",
+		title: "report forth",
+		boardId: "",
+		status: "",
+		ownerId: ""
+	},
+	{
+		_id: "5d602025e29e75c53bccc713",
+		title: "on faster",
+		boardId: "",
+		status: "",
+		ownerId: ""
+	},
+	{
+		_id: "5d6020252f61ab55e13cb823",
+		title: "sat upon",
+		boardId: "",
+		status: "",
+		ownerId: ""
+	},
+	{
+		_id: "5d6020253f49acf252b4b2a6",
+		title: "major something",
+		boardId: "",
+		status: "",
+		ownerId: ""
+	},
+	{
+		_id: "5d602025fd3db74ec9005051",
+		title: "faster specific",
+		boardId: "",
+		status: "",
+		ownerId: ""
+	}
+];
+
+const newCard = {
+	title: "",
+	boardId: "",
+	status: "",
+	ownerId: ""
+};
+
+// Users.
 const users = [
 	{
 		_id: "5d42e5d5e1e3d731df26010a",
@@ -100,6 +182,8 @@ const newUser = {
 };
 
 module.exports = {
+	cards,
+	newCard,
 	newUser,
 	users
 };
