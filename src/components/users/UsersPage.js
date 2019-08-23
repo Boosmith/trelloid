@@ -29,7 +29,7 @@ class UsersPage extends React.Component {
 	}
 	render() {
 		return (
-			<div>
+			<div className="jumbotron">
 				{this.state.redirectToAddUserPage && <Redirect push to="/user" />}
 				<h2>Users</h2>
 				{this.props.loading ? (
