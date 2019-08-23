@@ -22,7 +22,7 @@ const generateCards = function() {
 			title: words[i],
 			boardId: "",
 			status: "",
-			ownerId: ""
+			owner: ""
 		};
 		cards.push(card);
 	}

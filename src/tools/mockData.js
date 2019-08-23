@@ -1,74 +1,154 @@
 // Cards.
 const cards = [
 	{
-		_id: "5d6020254ea3a4ab3ffc476b",
-		title: "material leather",
+		_id: "5d60727643805a36c4c71d11",
+		title: "main until",
 		boardId: "",
 		status: "",
-		ownerId: ""
+		owner: {
+			_id: "5d42e5d5e1e3d731df26010a",
+			firstName: "Andrew",
+			lastName: "Smith",
+			address: "32 Walpole Road",
+			city: "London",
+			postcode: "N17",
+			__v: 0
+		}
 	},
 	{
-		_id: "5d602025c1b269d1aeba775d",
-		title: "labor hearing",
+		_id: "5d6072760a36855fc69a385d",
+		title: "worry know",
 		boardId: "",
 		status: "",
-		ownerId: ""
+		owner: {
+			_id: "5d42e5d5e1e3d731df26010a",
+			firstName: "Andrew",
+			lastName: "Smith",
+			address: "32 Walpole Road",
+			city: "London",
+			postcode: "N17",
+			__v: 0
+		}
 	},
 	{
-		_id: "5d6020255c4c086beb74fe3b",
-		title: "struck affect",
+		_id: "5d60727602117c1e63eaaf33",
+		title: "empty fog",
 		boardId: "",
 		status: "",
-		ownerId: ""
+		owner: {
+			_id: "5d42e5d5e1e3d731df26010a",
+			firstName: "Andrew",
+			lastName: "Smith",
+			address: "32 Walpole Road",
+			city: "London",
+			postcode: "N17",
+			__v: 0
+		}
 	},
 	{
-		_id: "5d602025f80d7c1056749a9a",
-		title: "continent difficulty",
+		_id: "5d6072760c989fa581296e02",
+		title: "taste become",
 		boardId: "",
 		status: "",
-		ownerId: ""
+		owner: {
+			_id: "5d42104a7979bd071c129604",
+			firstName: "Dora",
+			lastName: "Fitzgerald",
+			address: "1300 Eknaw Path",
+			city: "Evegirhe",
+			postcode: "P8K 4T1",
+			__v: 0
+		}
 	},
 	{
-		_id: "5d602025d4c222584dabbd78",
-		title: "screen forty",
+		_id: "5d6072763a5e8a7c5838ccfc",
+		title: "clean hurry",
 		boardId: "",
 		status: "",
-		ownerId: ""
+		owner: {
+			_id: "5d42104a7979bd071c129604",
+			firstName: "Dora",
+			lastName: "Fitzgerald",
+			address: "1300 Eknaw Path",
+			city: "Evegirhe",
+			postcode: "P8K 4T1",
+			__v: 0
+		}
 	},
 	{
-		_id: "5d602025a00dd4be2452e132",
-		title: "report forth",
+		_id: "5d6072761396a6b379fa5c3a",
+		title: "class invented",
 		boardId: "",
 		status: "",
-		ownerId: ""
+		owner: {
+			_id: "5d42104a7979bd071c129604",
+			firstName: "Dora",
+			lastName: "Fitzgerald",
+			address: "1300 Eknaw Path",
+			city: "Evegirhe",
+			postcode: "P8K 4T1",
+			__v: 0
+		}
 	},
 	{
-		_id: "5d602025e29e75c53bccc713",
-		title: "on faster",
+		_id: "5d607276ba59ac18120faf88",
+		title: "care respect",
 		boardId: "",
 		status: "",
-		ownerId: ""
+		owner: {
+			_id: "5d42104a7979bd071c12960b",
+			firstName: "Rodney",
+			lastName: "Fitzgerald",
+			address: "1961 Goku Heights",
+			city: "Kivzupzi",
+			postcode: "J5C 8H1",
+			__v: 0
+		}
 	},
 	{
-		_id: "5d6020252f61ab55e13cb823",
-		title: "sat upon",
+		_id: "5d60727626e6e7175e135164",
+		title: "stone enough",
 		boardId: "",
 		status: "",
-		ownerId: ""
+		owner: {
+			_id: "5d42104a7979bd071c12960b",
+			firstName: "Rodney",
+			lastName: "Fitzgerald",
+			address: "1961 Goku Heights",
+			city: "Kivzupzi",
+			postcode: "J5C 8H1",
+			__v: 0
+		}
 	},
 	{
-		_id: "5d6020253f49acf252b4b2a6",
-		title: "major something",
+		_id: "5d607276ba76a9f8094409f0",
+		title: "visit gulf",
 		boardId: "",
 		status: "",
-		ownerId: ""
+		owner: {
+			_id: "5d42104a7979bd071c12960b",
+			firstName: "Rodney",
+			lastName: "Fitzgerald",
+			address: "1961 Goku Heights",
+			city: "Kivzupzi",
+			postcode: "J5C 8H1",
+			__v: 0
+		}
 	},
 	{
-		_id: "5d602025fd3db74ec9005051",
-		title: "faster specific",
+		_id: "5d607276f683aa17684f4288",
+		title: "air running",
 		boardId: "",
 		status: "",
-		ownerId: ""
+		owner: {
+			_id: "5d42104a7979bd071c12960b",
+			firstName: "Rodney",
+			lastName: "Fitzgerald",
+			address: "1961 Goku Heights",
+			city: "Kivzupzi",
+			postcode: "J5C 8H1",
+			__v: 0
+		}
 	}
 ];
 
@@ -76,7 +156,7 @@ const newCard = {
 	title: "",
 	boardId: "",
 	status: "",
-	ownerId: ""
+	owner: ""
 };
 
 // Users.
