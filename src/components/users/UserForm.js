@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TextInput from "../common/TextInput";
+import Button from "@material-ui/core/Button";
 
 const UserForm = ({ user, onChange, onSave, saving = false, errors = {} }) => {
 	return (
@@ -50,9 +51,9 @@ const UserForm = ({ user, onChange, onSave, saving = false, errors = {} }) => {
 				onChange={onChange}
 				error={errors.postcode}
 			/>
-			<button type="submit" disabled={saving} className="btn btn-primary">
+			<Button type="submit" disabled={saving} variant="contained">
 				{saving ? "Saving..." : "Save"}
-			</button>
+			</Button>
 		</form>
 	);
 };
