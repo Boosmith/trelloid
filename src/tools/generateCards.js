@@ -1,4 +1,5 @@
 const randomWords = require("random-words");
+const bcrypt = require("bcrypt");
 
 const words = randomWords({ exactly: 10, wordsPerString: 2 });
 

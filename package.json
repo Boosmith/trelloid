@@ -87,6 +87,7 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "devDependencies": {
+    "bcrypt": "^3.0.6",
     "cssnano": "^4.1.10",
     "eslint": "^6.2.2",
     "fetch-mock": "^7.3.9",
