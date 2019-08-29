@@ -37,7 +37,7 @@ server.post("/users/", function(req, res, next) {
 	}
 });
 
-server.post("/users/authenticate", function(req, res, next) {
+server.post("/auth/login", function(req, res, next) {
 	const { userName, password } = req.body;
 	if (isAuthenticated(userName, password) === false) {
 		const status = 401;
@@ -50,6 +50,26 @@ server.post("/users/authenticate", function(req, res, next) {
 });
 
 router.db._.id = "_id";
+
+server.use(/^(?!\/auth).*$/, (req, res, next) => {
+	if (
+		req.headers.authorization === undefined ||
+		req.headers.authorization.split(" ")[0] !== "Bearer"
+	) {
+		const status = 401;
+		const message = "Bad authorization header";
+		res.status(status).json({ status, message });
+		return;
+	}
+	try {
+		verifyToken(req.headers.authorization.split(" ")[1]);
+		next();
+	} catch (err) {
+		const status = 401;
+		const message = "Error: access_token is not valid";
+		res.status(status).json({ status, message });
+	}
+});
 
 server.use("/api", router);
 
