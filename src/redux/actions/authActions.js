@@ -15,3 +15,7 @@ export function loginSuccess(user) {
 export function logout(user) {
 	return { type: actionTypes.LOGOUT, user: user };
 }
+
+export function login(user) {
+	return;
+}
