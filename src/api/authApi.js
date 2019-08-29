@@ -10,9 +10,9 @@ function login(userName, password) {
 
 	return fetch(baseUrl + "/login", requestOptions)
 		.then(handleResponse)
-		.then(token => {
-			localStorage.setItem("trelloid_token", JSON.stringify(token));
-			return token;
+		.then(auth => {
+			localStorage.setItem("trelloid_token", JSON.stringify(auth.token));
+			return auth.user;
 		})
 		.catch(handleError);
 }

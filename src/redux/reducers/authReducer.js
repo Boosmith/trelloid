@@ -1,10 +1,11 @@
 import * as actionTypes from "../actions/actionTypes";
-import initialState from "./initialState";
 
-export default function authReducer(state = initialState.users, action) {
+export default function authentication(state = {}, action) {
 	switch (action.type) {
+		case actionTypes.LOGIN_REQUEST:
+			return { loggingIn: true, user: action.user };
 		case actionTypes.LOGIN_SUCCESS:
-			return action.user;
+			return { loggedIn: true, user: action.user };
 		default:
 			return state;
 	}
