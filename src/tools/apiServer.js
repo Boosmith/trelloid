@@ -110,6 +110,7 @@ function isAuthenticated(userName, password) {
 	const user = users.filter(
 		user =>
 			user.userName === userName && bcrypt.compareSync(password, user.password)
-	);
-	return user[0];
+	)[0];
+	delete user.password;
+	return user;
 }
