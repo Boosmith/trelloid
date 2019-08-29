@@ -13,6 +13,21 @@ export function getOneUser(userId) {
 		.catch(handleError);
 }
 
+export function login(userName, password) {
+	const requestOptions = {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({ userName, password })
+	};
+
+	return fetch(baseUrl + "/authenticate", requestOptions)
+		.then(handleResponse)
+		.then(user => {
+			localStorage.setItem("trelloid_jwt_token", JSON.stringify(user.token));
+		})
+		.catch(handleError);
+}
+
 export function saveUser(user) {
 	return fetch(baseUrl + (user._id || ""), {
 		method: user._id ? "PUT" : "POST",
