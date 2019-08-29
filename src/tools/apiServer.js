@@ -39,14 +39,16 @@ server.post("/users/", function(req, res, next) {
 
 server.post("/auth/login", function(req, res, next) {
 	const { userName, password } = req.body;
-	if (isAuthenticated(userName, password) === false) {
+	const user = isAuthenticated(userName, password);
+	if (user) {
+		const access_token = createToken({ userName, password });
+		res.status(200).json({ access_token, user });
+	} else {
 		const status = 401;
 		const message = "Incorrect email or password";
 		res.status(status).json({ status, message });
 		return;
 	}
-	const access_token = createToken({ userName, password });
-	res.status(200).json({ access_token });
 });
 
 router.db._.id = "_id";
@@ -105,11 +107,9 @@ function verifyToken(token) {
 }
 
 function isAuthenticated(userName, password) {
-	return (
-		users.findIndex(
-			user =>
-				user.userName === userName &&
-				bcrypt.compareSync(password, user.password)
-		) !== -1
+	const user = users.filter(
+		user =>
+			user.userName === userName && bcrypt.compareSync(password, user.password)
 	);
+	return user[0];
 }

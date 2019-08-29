@@ -20,12 +20,11 @@ class LoginPage extends Component {
 	}
 
 	formIsValid() {
-		const { firstName, lastName, userName, password } = this.state.user;
+		const { userName, password } = this.state.user;
 		const errors = {};
 
-		if (!firstName) errors.firstName = "First name is required";
-		if (!lastName) errors.lastName = "Last name is required";
 		if (!userName) errors.userName = "User name is required";
+		if (!password) errors.password = "Password is required";
 
 		this.setState({ errors: errors });
 		return Object.keys(errors).length === 0;
@@ -43,10 +42,9 @@ class LoginPage extends Component {
 		if (!this.formIsValid()) return;
 		this.setState({ saving: true });
 		this.props.actions
-			.saveUser(this.state.user)
+			.login(this.state.user)
 			.then(() => {
-				toast.success("User saved");
-				this.props.history.push("/users");
+				this.props.history.push("/");
 			})
 			.catch(error => {
 				this.setState({
@@ -61,7 +59,13 @@ class LoginPage extends Component {
 	render() {
 		return (
 			<div>
-				<LoginForm></LoginForm>
+				<LoginForm
+					user={this.state.user}
+					onChange={this.handleChange}
+					onSave={this.handleSave}
+					saving={this.state.saving}
+					errors={this.state.errors}
+				></LoginForm>
 			</div>
 		);
 	}

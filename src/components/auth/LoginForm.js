@@ -9,24 +9,6 @@ const LoginForm = ({ onChange, onSave, errors, user }) => (
 			{errors.summary && <p className="error-message">{errors.summary}</p>}
 
 			<TextInput
-				name="firstName"
-				type="text"
-				label="First name"
-				value={user.firstName}
-				onChange={onChange}
-				error={errors.firstName}
-			/>
-
-			<TextInput
-				name="lastName"
-				type="text"
-				label="Last name"
-				value={user.lastName}
-				onChange={onChange}
-				error={errors.lastName}
-			/>
-
-			<TextInput
 				name="userName"
 				type="text"
 				label="User name"
