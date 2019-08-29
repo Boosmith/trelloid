@@ -3,6 +3,7 @@ const server = jsonServer.create();
 const path = require("path");
 const fs = require("fs");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 const router = jsonServer.router(path.join(__dirname, "db.json"));
 const users = JSON.parse(
 	fs.readFileSync(path.join(__dirname, "db.json"), "UTF-8")
@@ -86,7 +87,9 @@ function verifyToken(token) {
 function isAuthenticated(userName, password) {
 	return (
 		users.findIndex(
-			user => user.userName === userName && user.password === password
+			user =>
+				user.userName === userName &&
+				bcrypt.compareSync(password, user.password)
 		) !== -1
 	);
 }
