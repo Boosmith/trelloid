@@ -20,7 +20,7 @@ const TextInput = ({
 			<label htmlFor={name}>{label}</label>
 			<div className="field">
 				<input
-					type={type}
+					type={type || "text"}
 					name={name}
 					className="form-control"
 					placeholder={placeholder}

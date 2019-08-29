@@ -1,14 +1,14 @@
 import { handleResponse, handleError } from "./apiUtils";
-const baseUrl = process.env.REACT_APP_API_URL + "/api/auth/";
+const baseUrl = process.env.REACT_APP_API_URL + "/auth";
 
-function login(username, password) {
+function login(userName, password) {
 	const requestOptions = {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({ username, password })
+		body: JSON.stringify({ userName, password })
 	};
 
-	return fetch(baseUrl + "/auth/login", requestOptions)
+	return fetch(baseUrl + "/login", requestOptions)
 		.then(handleResponse)
 		.then(token => {
 			localStorage.setItem("trelloid_token", JSON.stringify(token));
@@ -21,7 +21,7 @@ function logout() {
 	localStorage.removeItem("user");
 }
 
-export const auth = {
+export default {
 	login,
 	logout
 };

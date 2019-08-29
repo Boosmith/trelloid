@@ -1,11 +1,12 @@
 import React from "react";
 import { Card } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 import TextInput from "../common/TextInput";
 
-const LoginForm = ({ onChange, onSave, errors, user }) => (
+const LoginForm = ({ onChange, onSave, saving, errors, user }) => (
 	<Card className="container">
 		<form action="/" onSubmit={onSave}>
-			<h2 className="card-heading">Registration</h2>
+			<h2 className="card-heading">Log in</h2>
 			{errors.summary && <p className="error-message">{errors.summary}</p>}
 
 			<TextInput
@@ -25,6 +26,9 @@ const LoginForm = ({ onChange, onSave, errors, user }) => (
 				onChange={onChange}
 				error={errors.password}
 			/>
+			<Button type="submit" disabled={saving} variant="contained">
+				{saving ? "Logging in..." : "Login"}
+			</Button>
 		</form>
 	</Card>
 );

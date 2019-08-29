@@ -5,12 +5,14 @@ import HomePage from "../home/HomePage";
 import UsersPage from "../users/UsersPage";
 import { default as ManageUserPage } from "../users/ManageUserPage";
 import RegistrationForm from "../auth/RegistrationForm";
+import LoginPage from "../auth/LoginPage";
 
 class Routes extends React.Component {
 	render() {
 		return (
 			<Switch>
 				<Route path="/" exact component={HomePage} />
+				<Route path="/auth/login" exact component={LoginPage} />
 				<Route path="/register" exact component={RegistrationForm} />
 				<Route path="/users" exact component={UsersPage} />
 				<Route path="/user/:uid" exact component={ManageUserPage} />

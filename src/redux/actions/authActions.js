@@ -1,6 +1,6 @@
 import * as actionTypes from "./actionTypes";
 import { beginApiCall } from "./apiStatusActions";
-import * as authApi from "../../api/authApi";
+import authApi from "../../api/authApi";
 
 export function loginFailure(user) {
 	return { type: actionTypes.LOGIN_FAILURE, user: user };
