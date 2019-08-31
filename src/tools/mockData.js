@@ -322,9 +322,9 @@ const newCard = {
 	activity: "",
 	attachments: "",
 	owner: "",
-	members: [[Object], [Object]],
-	createdDate: "2019-08-31T16:21:20.029Z",
-	modifiedDate: "2019-08-31T16:21:20.029Z"
+	members: "",
+	createdDate: "",
+	modifiedDate: ""
 };
 
 // Users.
