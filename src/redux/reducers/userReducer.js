@@ -1,7 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
 import initialState from "./initialState";
 
-export default function userReducer(state = initialState.users, action) {
+export default function users(state = initialState.users, action) {
 	switch (action.type) {
 		case actionTypes.DELETE_USER_OPTIMISTIC:
 			return state.filter(user => user._id !== action.user._id);

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TextInput from "../common/TextInput";
+import Button from "@material-ui/core/Button";
 
 const UserForm = ({ user, onChange, onSave, saving = false, errors = {} }) => {
 	return (
@@ -13,6 +14,7 @@ const UserForm = ({ user, onChange, onSave, saving = false, errors = {} }) => {
 			)}
 			<TextInput
 				name="firstName"
+				type="text"
 				label="First name"
 				value={user.firstName}
 				onChange={onChange}
@@ -21,6 +23,7 @@ const UserForm = ({ user, onChange, onSave, saving = false, errors = {} }) => {
 
 			<TextInput
 				name="lastName"
+				type="text"
 				label="Last name"
 				value={user.lastName}
 				onChange={onChange}
@@ -29,6 +32,7 @@ const UserForm = ({ user, onChange, onSave, saving = false, errors = {} }) => {
 
 			<TextInput
 				name="address"
+				type="text"
 				label="Address"
 				value={user.address}
 				onChange={onChange}
@@ -37,6 +41,7 @@ const UserForm = ({ user, onChange, onSave, saving = false, errors = {} }) => {
 
 			<TextInput
 				name="city"
+				type="text"
 				label="City"
 				value={user.city}
 				onChange={onChange}
@@ -45,14 +50,15 @@ const UserForm = ({ user, onChange, onSave, saving = false, errors = {} }) => {
 
 			<TextInput
 				name="postcode"
+				type="text"
 				label="Postcode"
 				value={user.postcode}
 				onChange={onChange}
 				error={errors.postcode}
 			/>
-			<button type="submit" disabled={saving} className="btn btn-primary">
+			<Button type="submit" disabled={saving} variant="contained">
 				{saving ? "Saving..." : "Save"}
-			</button>
+			</Button>
 		</form>
 	);
 };

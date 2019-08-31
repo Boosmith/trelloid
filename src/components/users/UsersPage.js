@@ -7,6 +7,7 @@ import * as userActions from "../../redux/actions/userActions";
 import { Redirect } from "react-router-dom";
 import Loader from "../common/Loader";
 import { toast } from "react-toastify";
+import Button from "@material-ui/core/Button";
 
 class UsersPage extends React.Component {
 	constructor(props) {
@@ -29,19 +30,20 @@ class UsersPage extends React.Component {
 	}
 	render() {
 		return (
-			<div>
+			<div className="jumbotron">
 				{this.state.redirectToAddUserPage && <Redirect push to="/user" />}
 				<h2>Users</h2>
 				{this.props.loading ? (
 					<Loader />
 				) : (
 					<>
-						<button
+						<Button
+							variant="contained"
 							className="btn btn-primary"
 							onClick={this.redirectToAddUserPage}
 						>
 							Add User
-						</button>
+						</Button>
 						<UserList
 							onDeleteClick={this.handleDeleteUser}
 							users={this.props.users}
