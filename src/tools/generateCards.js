@@ -1,4 +1,5 @@
 const randomWords = require("random-words");
+const LoremIpsum = require("lorem-ipsum").LoremIpsum;
 const bcrypt = require("bcrypt");
 const { users } = require("./mockData");
 
@@ -16,19 +17,53 @@ var mongoObjectId = function() {
 	);
 };
 
+const createLoremIpsum = () => {
+	const lorem = new LoremIpsum({
+		wordsPerSentence: {
+			max: 10,
+			min: 4
+		}
+	});
+
+	return lorem.generateSentences(5);
+};
+
 const generateCards = function() {
 	const cards = [];
 	for (let i = 0; i < 10; i++) {
 		let card = {
 			_id: mongoObjectId(),
+			number: `#${i}`,
 			title: words[i],
-			boardId: "",
+			description: createLoremIpsum(),
 			status: "",
-			owner: ""
+			board: "",
+			comments: "",
+			activity: "",
+			attachments: "",
+			owner: {
+				_id: "5d42e5d5e1e3d731df26010a",
+				firstName: "Andrew",
+				lastName: "Smith"
+			},
+			members: JSON.stringify([
+				{
+					_id: "5d42104a7979bd071c129606",
+					firstName: "Dale",
+					lastName: "Fitzgerald"
+				},
+				{
+					_id: "5d42104a7979bd071c129609",
+					firstName: "Adeline",
+					lastName: "Fitzgerald"
+				}
+			]),
+			createdDate: new Date().toJSON(),
+			modifiedDate: new Date().toJSON()
 		};
 		cards.push(card);
 	}
-	console.log(cards);
+	console.log("object: %O", cards);
 };
 
 const updateMockUsers = function() {
@@ -44,6 +79,5 @@ const updateMockUsers = function() {
 	console.log(updatedUsers);
 };
 
-module.exports =
-	// generateCards,
-	updateMockUsers();
+module.exports = generateCards();
+//updateMockUsers();
