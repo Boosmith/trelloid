@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
-import Card from "../../src/components/cards/card";
+import Card from "../../src/components/cards/Card";
 
 const card = {
 	_id: "5d6aa2c07500c1f9ceb14f9b",
