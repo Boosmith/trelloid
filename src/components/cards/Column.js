@@ -16,7 +16,7 @@ export class Column extends Component {
 	}
 	render() {
 		return (
-			<Grid>
+			<Grid spacing={2}>
 				{this.props.cards.map(({ _id, title, description }) => (
 					<Card id={_id} title={title} description={description} />
 				))}
