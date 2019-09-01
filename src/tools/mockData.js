@@ -1,3 +1,39 @@
+// Boards
+const boards = [
+	{
+		_id: "5d6bdc4477a611ed000dda8d",
+		title: "Sprint One",
+		description: "",
+		status: "",
+		owner: "",
+		members: "",
+		createdDate: "",
+		modifiedDate: ""
+	},
+	{
+		_id: "5d6bdc44670d4a0b6f20ccbc",
+		title: "Sprint Two",
+		description: "",
+		status: "",
+		owner: "",
+		members: "",
+		createdDate: "",
+		modifiedDate: ""
+	}
+];
+
+const newBoard = {
+	title: "",
+	description: "",
+	status: "",
+	owner: "",
+	members: "",
+	createdDate: "",
+	modifiedDate: ""
+};
+
+//
+
 // Cards.
 const cards = [
 	{
@@ -311,7 +347,13 @@ const cards = [
 		modifiedDate: "2019-08-31T16:39:28.780Z"
 	}
 ];
-
+const cardStatuses = [
+	{ _id: "5d6bdb0d70e350e5f69b72c7", status: "To do" },
+	{ _id: "5d6bdb0da5211844dfb464a7", status: "In progress" },
+	{ _id: "5d6bdb0de5b0b462a9ccd077", status: "Review" },
+	{ _id: "5d6bdb0d9097653498cdb01c", status: "UAT" },
+	{ _id: "5d6bdb0d08a3da896983e574", status: "Done" }
+];
 const newCard = {
 	number: "",
 	title: "",
@@ -451,7 +493,10 @@ const newUser = {
 };
 
 module.exports = {
+	boards,
 	cards,
+	cardStatuses,
+	newBoard,
 	newCard,
 	newUser,
 	users

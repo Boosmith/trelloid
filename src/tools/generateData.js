@@ -66,6 +66,17 @@ const generateCards = function() {
 	console.log("object: %O", cards);
 };
 
+const generateStatuses = function() {
+	const statuses = [];
+	for (let i = 0; i < 5; i++) {
+		let status = {
+			_id: mongoObjectId(),
+			status: ""
+		};
+		statuses.push(status);
+	}
+	console.log(statuses);
+};
 const updateMockUsers = function() {
 	const updatedUsers = users.map(user => {
 		let userName = randomWords({ exactly: 2, join: " " });
@@ -79,5 +90,5 @@ const updateMockUsers = function() {
 	console.log(updatedUsers);
 };
 
-module.exports = generateCards();
+module.exports = generateStatuses();
 //updateMockUsers();

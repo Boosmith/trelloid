@@ -1,20 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Column } from "./Column";
 
-class Board extends Component {
-	constructor(props) {
-		super(props);
+export const Board = ({ cards }) => {
+	return <Column cards={cards}></Column>;
+};
 
-		this.state = {
-			cards: this.props.cards
-		};
-	}
-	render() {
-		return <Column cards={this.state.cards}></Column>;
-	}
-}
+Board.propTypes = {
+	cards: PropTypes.array.isRequired
+};
 
-Board.propTypes = {};
+const MapStateToProps = state => ({ cards: state.cards });
 
-export default Board;
+export default connect(MapStateToProps)(Board);

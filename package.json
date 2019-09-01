@@ -102,6 +102,7 @@
     "eslint": "^6.2.2",
     "fetch-mock": "^7.3.9",
     "json-server": "^0.14.2",
+    "lorem-ipsum": "^2.0.3",
     "node-fetch": "^2.3.0",
     "npm-run-all": "^4.1.5",
     "postcss-loader": "^3.0.0",
