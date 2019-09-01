@@ -32,9 +32,10 @@ it("should clean up referenced members", function() {
 		createdDate: "2019-08-31T16:39:28.780Z",
 		modifiedDate: "2019-08-31T16:39:28.780Z"
 	};
-
-	expect(depopulateCard(card).members).toEqual([
+	const depopulatedCard = depopulateCard(card);
+	expect(depopulatedCard.members).toEqual([
 		"5d42104a7979bd071c129606",
 		"5d42104a7979bd071c129609"
 	]);
+	expect(depopulatedCard.owner).toEqual("5d42e5d5e1e3d731df26010a");
 });

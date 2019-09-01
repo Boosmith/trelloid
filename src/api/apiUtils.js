@@ -14,3 +14,22 @@ export function handleError(error) {
 	console.error("API call failed. " + error);
 	throw error;
 }
+
+export function depopulateObject(obj, ...populatedProperties) {
+	const depopulatedObject = obj;
+
+	populatedProperties.forEach(property => {
+		let targetProp = obj[property];
+		if (!Array.isArray(targetProp)) {
+			depopulatedObject[property] = targetProp._id;
+		} else {
+			let depopulated = [];
+			depopulatedObject[property].forEach(item => {
+				depopulated.push(item._id);
+			});
+			depopulatedObject[property] = depopulated;
+		}
+		return;
+	});
+	return depopulatedObject;
+}

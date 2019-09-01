@@ -1,15 +1,13 @@
-import { handleResponse, handleError } from "./apiUtils";
+import {
+	depopulateMongooseObject,
+	handleResponse,
+	handleError
+} from "./apiUtils";
 import { bearerHeaders } from "../tools/auth";
 const baseUrl = process.env.REACT_APP_API_URL + "/api/cards/";
 
 export function depopulateCard(card) {
-	card.owner = card.owner._id;
-	let members = [];
-	card.members.forEach(member => {
-		members.push(member._id);
-	});
-	card.members = members;
-	return card;
+	return depopulateMongooseObject(card, "owner", "members");
 }
 
 export function getCards() {
