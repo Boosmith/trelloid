@@ -5,7 +5,7 @@ import * as cardActions from "../../redux/actions/cardActions";
 import Grid from "@material-ui/core/Grid";
 import Card from "./Card";
 
-class Column extends Component {
+export class Column extends Component {
 	constructor(props, context) {
 		super(props, context);
 
@@ -23,7 +23,10 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => ({
-	actions: bindActionCreators()
+	actions: bindActionCreators(cardActions, dispatch)
 });
 
-export default connect(mapStateToProps)(Column);
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Column);

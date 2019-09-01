@@ -15,11 +15,13 @@ export function getOneUser(userId) {
 }
 
 export function saveUser(user) {
-	return fetch(baseUrl + (user._id || ""), {
+	const options = {
 		method: user._id ? "PUT" : "POST",
-		headers: { "Content-type": "application/json" },
+		headers: { "content-type": "application/json" },
 		body: JSON.stringify(user)
-	})
+	};
+	options.headers = { ...options.headers, ...bearerHeaders().headers };
+	return fetch(baseUrl + (user._id || ""), options)
 		.then(handleResponse)
 		.catch(handleError);
 }
