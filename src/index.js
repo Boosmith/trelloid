@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "react-dom";
+import { renderToString } from "react-dom/server";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./components/App";
 import { Provider } from "react-redux";
@@ -11,7 +11,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 const store = configureStore();
 store.dispatch(loadUsers());
 
-render(
+renderToString(
 	<Provider store={store}>
 		<Router>
 			<App />
