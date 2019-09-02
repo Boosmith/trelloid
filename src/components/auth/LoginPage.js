@@ -46,7 +46,7 @@ class LoginPage extends Component {
 			.login(this.state.user)
 			.then(auth => {
 				this.setState({ auth: auth });
-				localStorage.setItem("jwt_auth", JSON.stringify(auth));
+				localStorage.setItem("trelloid_token", JSON.stringify(auth));
 				this.props.history.push("/");
 			})
 			.catch(error => {

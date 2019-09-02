@@ -21,8 +21,8 @@ class UsersPage extends React.Component {
 	}
 
 	componentDidMount() {
-		if (!!localStorage.getItem("jwt_item")) {
-			const auth = localStorage.getItem("jwt_auth");
+		if (!!localStorage.getItem("trelloid_token")) {
+			const auth = localStorage.getItem("trelloid_token");
 			this.props.actions.loadUsers(auth.token);
 		}
 	}

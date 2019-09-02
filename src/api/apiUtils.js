@@ -15,7 +15,7 @@ export function handleError(error) {
 	throw error;
 }
 
-export function depopulateObject(obj, ...populatedProperties) {
+export function depopulateMongooseObject(obj, ...populatedProperties) {
 	const depopulatedObject = obj;
 
 	populatedProperties.forEach(property => {
@@ -31,5 +31,5 @@ export function depopulateObject(obj, ...populatedProperties) {
 		}
 		return;
 	});
-	return depopulatedMongooseObject;
+	return depopulatedObject;
 }

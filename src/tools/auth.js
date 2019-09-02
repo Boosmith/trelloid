@@ -1,11 +1,5 @@
-function getToken() {
-	return localStorage.getItem("trelloid_token");
-}
-
-function bearerHeaders() {
+export function bearerHeaders(token) {
 	return {
-		headers: { Authorization: "Bearer " + getToken() }
+		headers: { Authorization: "Bearer " + token }
 	};
 }
-
-export { bearerHeaders };
