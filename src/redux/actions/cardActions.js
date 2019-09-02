@@ -7,19 +7,19 @@ export function apiCallError(error) {
 }
 
 export function createCardSuccess(card) {
-	return { type: actionTypes.CREATE_USER_SUCCESS, card: card };
+	return { type: actionTypes.CREATE_CARD_SUCCESS, card: card };
 }
 
 export function deleteCardOptimistic(card) {
-	return { type: actionTypes.DELETE_USER_OPTIMISTIC, card: card };
+	return { type: actionTypes.DELETE_CARD_OPTIMISTIC, card: card };
 }
 
 export function loadCardsSuccess(cards) {
-	return { type: actionTypes.LOAD_USERS_SUCCESS, cards: cards };
+	return { type: actionTypes.LOAD_CARDS_SUCCESS, cards: cards };
 }
 
 export function updateCardSuccess(card) {
-	return { type: actionTypes.UPDATE_USER_SUCCESS, card: card };
+	return { type: actionTypes.UPDATE_CARD_SUCCESS, card: card };
 }
 
 export function deleteCard(card) {

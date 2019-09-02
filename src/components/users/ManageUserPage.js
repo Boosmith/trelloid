@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import UserForm from "../users/UserForm";
 import { connect } from "react-redux";
-import * as userActions from "../../redux/actions/userActions";
-import { bindActionCreators } from "redux";
+import { saveUser } from "../../redux/actions/userActions";
+
 import Loader from "../common/Loader";
 import { toast } from "react-toastify";
 import { newUser } from "../../tools/mockData";
@@ -53,7 +53,7 @@ export class ManageUserPage extends React.Component {
 		event.preventDefault();
 		if (!this.formIsValid()) return;
 		this.setState({ saving: true });
-		this.props.actions
+		this.props
 			.saveUser(this.state.user)
 			.then(() => {
 				toast.success("User saved");
@@ -101,12 +101,12 @@ function mapStateToProps(state, ownProps) {
 	};
 }
 
-const mapDispatchToProps = dispatch => ({
-	actions: bindActionCreators(userActions, dispatch)
-});
+const actionCreators = {
+	saveUser
+};
 
 ManageUserPage.propTypes = {
-	actions: PropTypes.object.isRequired,
+	saveUser: PropTypes.func.isRequired,
 	history: PropTypes.object.isRequired,
 	user: PropTypes.object.isRequired,
 	users: PropTypes.array.isRequired
@@ -114,5 +114,5 @@ ManageUserPage.propTypes = {
 
 export default connect(
 	mapStateToProps,
-	mapDispatchToProps
+	actionCreators
 )(ManageUserPage);
