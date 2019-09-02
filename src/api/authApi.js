@@ -10,8 +10,8 @@ function login(userName, password) {
 
 	return fetch(baseUrl + "/login", requestOptions)
 		.then(handleResponse)
-		.then(({ token, user }) => {
-			return { token, user };
+		.then(auth => {
+			return auth;
 		})
 		.catch(handleError);
 }

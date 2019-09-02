@@ -13,10 +13,18 @@ class UsersPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			redirectToAddUserPage: false
+			redirectToAddUserPage: false,
+			users: {}
 		};
 		this.handleDeleteUser = this.handleDeleteUser.bind(this);
 		this.redirectToAddUserPage = this.redirectToAddUserPage.bind(this);
+	}
+
+	componentDidMount() {
+		if (!!localStorage.getItem("jwt_item")) {
+			const auth = localStorage.getItem("jwt_auth");
+			this.props.actions.loadUsers(auth.token);
+		}
 	}
 
 	handleDeleteUser(user) {
