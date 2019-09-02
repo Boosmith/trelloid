@@ -10,6 +10,7 @@ class LoginPage extends Component {
 		super(props, context);
 
 		this.state = {
+			auth: {},
 			user: {},
 			errors: {},
 			saving: false
@@ -43,7 +44,9 @@ class LoginPage extends Component {
 		this.setState({ saving: true });
 		this.props.actions
 			.login(this.state.user)
-			.then(() => {
+			.then(auth => {
+				this.setState({ auth: auth });
+				localStorage.setItem("jwt_auth", JSON.stringify(auth));
 				this.props.history.push("/");
 			})
 			.catch(error => {

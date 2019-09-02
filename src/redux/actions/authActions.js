@@ -10,23 +10,23 @@ export function loginRequest(user) {
 	return { type: actionTypes.LOGIN_REQUEST, user: user };
 }
 
-export function loginSuccess(user) {
-	return { type: actionTypes.LOGIN_SUCCESS, user: user };
+export function loginSuccess(auth) {
+	return { type: actionTypes.LOGIN_SUCCESS, auth: auth };
 }
 
 export function logoutSuccess(user) {
 	return { type: actionTypes.LOGOUT_SUCCESS };
 }
 
-export function login(user) {
+export function login(loginDetails) {
 	return function(dispatch) {
 		dispatch(beginApiCall());
-		dispatch(loginRequest({ user }));
-		const { userName, password } = user;
+		dispatch(loginRequest({ loginDetails }));
+		const { userName, password } = loginDetails;
 		return authApi
 			.login(userName, password)
-			.then(() => {
-				dispatch(loginSuccess(user));
+			.then(({ token, user }) => {
+				dispatch(loginSuccess({ token, user }));
 			})
 			.catch(err => {
 				dispatch(loginFailure(err));

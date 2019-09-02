@@ -5,7 +5,7 @@ export default function authentication(state = {}, action) {
 		case actionTypes.LOGIN_REQUEST:
 			return { loggingIn: true, user: action.user };
 		case actionTypes.LOGIN_SUCCESS:
-			return { loggedIn: true, user: action.user };
+			return { loggedIn: true, auth: action.auth };
 		default:
 			return state;
 	}

@@ -42,7 +42,7 @@ server.post("/auth/login", function(req, res, next) {
 	const user = isAuthenticated(userName, password);
 	if (user) {
 		const tokenValue = createToken({ userName, password });
-		res.status(200).json({ token: tokenValue, user });
+		res.status(200).json({ token: tokenValue, user: user });
 	} else {
 		const status = 401;
 		const message = "Incorrect email or password";
