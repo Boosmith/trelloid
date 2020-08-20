@@ -97,7 +97,7 @@
     "@storybook/addon-links": "^5.1.11",
     "@storybook/addons": "^5.1.11",
     "@storybook/react": "^5.1.11",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "cssnano": "^4.1.10",
     "eslint": "^6.2.2",
     "fetch-mock": "^7.3.9",
